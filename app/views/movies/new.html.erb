@@ -1,4 +1,4 @@
-<h1><%= @movie.title %></h1>
+<h1>Add New Movie</h1>
 <%= form_for @movie do |f| %>
   <p>
     <%= f.label :title %><br/>
@@ -11,7 +11,6 @@
   <p>
     <%= f.label :rating %><br/>
     <%= f.text_field :rating %>
-  </p>
   <p>
     <%= f.label :released_on %><br/>
     <%= f.date_select :released_on %>
@@ -23,5 +22,5 @@
   <p>
     <%= f.submit %>
   </p>
-  <%= link_to "Back", movie_path(@movie) %>
+  <%= link_to "Back", movies_path %>
 <% end %>
