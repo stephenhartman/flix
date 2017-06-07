@@ -1,6 +1,6 @@
 <h1><%= pluralize(@movies.size, "Movie") %></h1>
 <% @movies.each do |movie| %>
-  <h2><%= movie.title %></h2>
+  <h2><%= link_to movie.title, movie_path(movie) %></h2>
   <p><%= truncate(movie.description, length: 40, separator: ' ') %></p>
   <table>
     <tr>
@@ -9,7 +9,7 @@
     </tr>
     <tr>
       <th>Total Gross</th>
-      <td><%= number_to_currency(movie.total_gross) %></td>
+      <td><%= format_total_gross(movie) %></td>
     </tr>
     <tr>
       <th>Release Date</th>
