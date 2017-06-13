@@ -1,20 +1,30 @@
 <h1><%= pluralize(@movies.size, "Movie") %></h1>
 <% @movies.each do |movie| %>
-  <h2><%= link_to movie.title, movie_path(movie) %></h2>
-  <p><%= truncate(movie.description, length: 40, separator: ' ') %></p>
-  <table>
-    <tr>
-      <th>Rating</th>
-      <td><%= movie.rating %></td>
-    </tr>
-    <tr>
-      <th>Total Gross</th>
-      <td><%= format_total_gross(movie) %></td>
-    </tr>
-    <tr>
-      <th>Release Date</th>
-      <td><%= movie.released_on %></td>
-    </tr>
-  </table>
+  <article>
+    <header>
+      <h2><%= link_to movie.title, movie_path(movie) %></h2>
+      <%= image_for movie %>
+      <h3><%= movie.cast %>
+    </header>
+    <p><%= truncate(movie.description, length: 40, separator: ' ') %></p>
+    <table>
+      <tr>
+        <th>Rating</th>
+        <td><%= movie.rating %></td>
+      </tr>
+      <tr>
+        <th>Duration</th>
+        <td><%= movie.duration %></td>
+      </tr>
+      <tr>
+        <th>Total Gross</th>
+        <td><%= format_total_gross(movie) %></td>
+      </tr>
+      <tr>
+        <th>Release Date</th>
+        <td><%= time_ago_in_words movie.released_on %> ago</td>
+      </tr>
+    </table>
+  </article>
 <% end %>
 <%= link_to 'Add New Movie', new_movie_path %>

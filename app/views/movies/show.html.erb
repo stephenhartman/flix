@@ -2,6 +2,7 @@
   <header>
     <h1><%= @movie.title %></h1>
   </header>
+  <%= image_for @movie %>
   <h2>Description</h2>
   <p>
     <%= @movie.description %>
@@ -17,6 +18,18 @@
   <h3>Total Gross</h3>
   <p>
     <%= format_total_gross(@movie) %>
+  </p>
+  <h3>Cast</h3>
+  <p>
+    <%= @movie.cast %>
+  </p>
+  <h3>Director</h3>
+  <p>
+    <%= @movie.director %>
+  </p>
+  <h3>Duration</h3>
+  <p>
+    <%= @movie.duration %>
   </p>
   <%= link_to "All Movies", movies_path %> |
   <%= link_to "Edit", edit_movie_path(@movie) %> |
