@@ -32,7 +32,7 @@ describe "Viewing the list of movies" do
     expect(page).to have_text(movie1_released)
     expect(page).to have_text(movie1.cast)
     expect(page).to have_text(movie1.duration)
-    # expect(page).to have_text(movie1.image_file_name)
+    # expect(page).to have_css("img[src*='ironman.jpg']")
   end
 
   it "does not show a movie that hasn't released" do
