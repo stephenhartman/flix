@@ -1,4 +1,5 @@
 require 'rails_helper'
+include ActionView::Helpers::DateHelper
 
 describe "Viewing the list of movies" do
   it "shows the movie" do
@@ -27,7 +28,11 @@ describe "Viewing the list of movies" do
     expect(page).to have_text(movie1.rating)
     expect(page).to have_text("$318,412,101.00")
     expect(page).to have_text(movie1.description[0..10])
-    expect(page).to have_text(movie1.released_on)
+    movie1_released = "#{time_ago_in_words movie1.released_on} ago"
+    expect(page).to have_text(movie1_released)
+    expect(page).to have_text(movie1.cast)
+    expect(page).to have_text(movie1.duration)
+    # expect(page).to have_css("img[src*='ironman.jpg']")
   end
 
   it "does not show a movie that hasn't released" do
