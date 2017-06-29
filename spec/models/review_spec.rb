@@ -50,4 +50,14 @@ describe "A review" do
       expect(review.errors[:stars].first).to eq("must be between 1 and 5")
     end
   end
+
+  it "calculates the average number of review stars" do
+    movie = Movie.create(movie_attributes)
+
+    movie.reviews.create(review_attributes(stars: 1))
+    movie.reviews.create(review_attributes(stars: 3))
+    movie.reviews.create(review_attributes(stars: 5))
+
+    expect(movie.average_stars).to eq(3)
+  end
 end
